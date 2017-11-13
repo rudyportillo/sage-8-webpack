@@ -1,14 +1,13 @@
 //webpack.config.js
 
 const webpack               = require('webpack')
+
 const BrowserSyncPlugin     = require('browser-sync-webpack-plugin')
 const CleanWebpackPlugin    = require('clean-webpack-plugin')
 const CopyWebpackPlugin     = require('copy-webpack-plugin')
 const ExtractTextPlugin     = require('extract-text-webpack-plugin')
-const FileLoader            = require('file-loader')
 const ImageminPlugin        = require('imagemin-webpack-plugin').default
 const path                  = require('path')
-const UrlLoader             = require('url-loader')
 const WebpackAssetsManifest = require('webpack-assets-manifest')
 const FileWatcherPlugin     = require("file-watcher-webpack-plugin");
 
@@ -35,15 +34,17 @@ module.exports = (env = {}) => {
     externals: {
       jquery: 'jQuery',
     },
+    devtool: "source-map",
     module: {
       rules: [{
         test: /\.scss$/,
+        include: path.resolve(__dirname, 'assets'),
         use: ExtractTextPlugin.extract({
           use: [{
             loader: "css-loader", options: {
               sourceMap: isDevelopment
             }
-          }, { 
+          }, {
             loader: "postcss-loader", options: {
               sourceMap: isDevelopment
             }
@@ -55,15 +56,26 @@ module.exports = (env = {}) => {
           // use style-loader in development
           fallback: "style-loader"
         })
-      },
-      {
+      }, {
         test: /\.(png|jpg|gif)$/,
+        include: path.resolve(__dirname, 'assets'),
         use: [
           {
             loader: 'url-loader',
             options: {limit: 8192}
           }
         ]
+      }, {
+        test: /\.js$/,
+        include: path.resolve(__dirname, 'assets'),
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['es2015', { modules: false }]
+            ]
+          }
+        }]
       }]
     },
     plugins: [
@@ -71,7 +83,7 @@ module.exports = (env = {}) => {
         $: 'jquery',
         jQuery: 'jquery',
         'window.jQuery': 'jquery',
-        Popper: 'popper.js',
+        Popper: ['popper.js', 'default'],
       }),
       new CleanWebpackPlugin('dist'),
       new BrowserSyncPlugin({
@@ -99,7 +111,7 @@ module.exports = (env = {}) => {
       new FileWatcherPlugin({
         root: __dirname,
         files: ['*.php']
-      })
+      }),
     ]
   }
 
