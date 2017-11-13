@@ -1,8 +1,8 @@
 {
-  "name": "roots/sage",
+  "name": "drdogbot7/sage-8-webpack",
   "type": "wordpress-theme",
   "license": "MIT",
-  "description": "The best WordPress starter theme with a modern front-end development workflow. Based on HTML5 Boilerplate, gulp, Bower, and Bootstrap.",
+  "description": "The best WordPress starter theme with a modern front-end development workflow. Based on HTML5 Boilerplate, webpack, and Bootstrap.",
   "homepage": "https://roots.io/sage/",
   "authors": [
     {
