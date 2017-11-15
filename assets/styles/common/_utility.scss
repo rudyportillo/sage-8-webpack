@@ -1,0 +1,41 @@
+/*
+    Classes for custom colors
+*/
+
+@each $color, $value in $colors {
+  @include bg-variant('.bg-#{$color}', $value);
+}
+
+@each $color, $value in $colors {
+  @include text-emphasis-variant('.text-#{$color}', $value);
+}
+
+/*
+  Aspect ratio (https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/)
+  The mixin assumes you'll be nesting an element with the class of content inside your initial block. Like this:
+
+  <div class="sixteen-nine">
+    <div class="content">
+      insert content here
+      this will maintain a 16:9 aspect ratio
+    </div>
+  </div>
+
+*/
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
