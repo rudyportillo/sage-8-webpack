@@ -11,10 +11,7 @@ const path                  = require('path')
 const WebpackAssetsManifest = require('webpack-assets-manifest')
 const FileWatcherPlugin     = require("file-watcher-webpack-plugin");
 
-const themeOpts = {
-  "name": "yourthemename",
-  "proxy": "http://localhost:1234"
-}
+require('theme.config.js')
 
 module.exports = (env = {}) => {
 
