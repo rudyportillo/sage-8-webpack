@@ -10,11 +10,7 @@ const path                  = require('path')
 const WebpackAssetsManifest = require('webpack-assets-manifest')
 const FileWatcherPlugin     = require("file-watcher-webpack-plugin");
 
-<<<<<<< HEAD
-const themeOpts = require('./theme.config.js')
-=======
 const themeOpts = require('./webpack/theme.config.js')
->>>>>>> 7949d01... improve image processing and asset manifest
 
 module.exports = (env = {}) => {
 
