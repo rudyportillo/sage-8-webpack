@@ -1,4 +1,2 @@
-const themeOpts = {
-  "name": "yourthemename",
-  "proxy": "http://localhost:1234"
-}
+const name = "yourthemename"
+const proxy = "http://localhost:1234"
