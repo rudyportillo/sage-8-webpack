@@ -1,16 +1,12 @@
 #slideout-panel {
-  background: white;
+  background: $body-bg;
 }
 
 .slideout {
-  background: $gray-800;
   padding: $spacer;
 }
 
-.slideout .menu-item > a {
-  // @extend .nav-link;
-  color: $gray-200;
-}
+.slideout .menu-item > a {}
 
 .slideout .sub-menu {
   padding-left: $spacer;
