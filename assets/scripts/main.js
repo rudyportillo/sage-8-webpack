@@ -31,6 +31,9 @@ const slideout = new Slideout({
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
 
+        // Superfish dropdown menu
+        $('.sf-menu').superfish();
+
         // Toggle button
         $('.slideout-toggle-button').on('click', function() {
           slideout.toggle();
