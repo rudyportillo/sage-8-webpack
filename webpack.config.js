@@ -4,14 +4,17 @@ const webpack               = require('webpack')
 
 const BrowserSyncPlugin     = require('browser-sync-webpack-plugin')
 const CleanWebpackPlugin    = require('clean-webpack-plugin')
-const CopyWebpackPlugin     = require('copy-webpack-plugin')
 const ExtractTextPlugin     = require('extract-text-webpack-plugin')
 const ImageminPlugin        = require('imagemin-webpack-plugin').default
 const path                  = require('path')
 const WebpackAssetsManifest = require('webpack-assets-manifest')
 const FileWatcherPlugin     = require("file-watcher-webpack-plugin");
 
+<<<<<<< HEAD
 const themeOpts = require('./theme.config.js')
+=======
+const themeOpts = require('./webpack/theme.config.js')
+>>>>>>> 7949d01... improve image processing and asset manifest
 
 module.exports = (env = {}) => {
 
@@ -21,7 +24,8 @@ module.exports = (env = {}) => {
   let config = {
     entry: {
       main: "./assets/app.js",
-      customizer: "./assets/scripts/customizer.js"
+      customizer: "./assets/scripts/customizer.js",
+      images: "./assets/scripts/images.js"
     },
     output: {
       path: __dirname + "/dist/",
@@ -43,7 +47,10 @@ module.exports = (env = {}) => {
             }
           }, {
             loader: "postcss-loader", options: {
-              sourceMap: isDevelopment
+              sourceMap: isDevelopment,
+              config: {
+                path: 'webpack/postcss.config.js'
+              }
             }
           }, {
             loader: "sass-loader", options: {
@@ -54,12 +61,26 @@ module.exports = (env = {}) => {
           fallback: "style-loader"
         })
       }, {
-        test: /\.(png|jpg|gif)$/,
-        include: path.resolve(__dirname, 'assets'),
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        include: path.resolve(__dirname, 'assets/images'),
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: isProduction ? "images/[name]-[hash].[ext]" : "images/[name].[ext]",
+            }
+          }
+        ]
+      }, {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        include: path.resolve(__dirname, 'assets/css-images'),
         use: [
           {
             loader: 'url-loader',
-            options: {limit: 8192}
+            options: {
+              name: isProduction ? "images/[name]-[hash].[ext]" : "images/[name].[ext]",
+              limit: 8192
+            }
           }
         ]
       }, {
@@ -89,14 +110,9 @@ module.exports = (env = {}) => {
           proxy: themeOpts.proxy
       }),
       new WebpackAssetsManifest({
-        output: 'assets.json'
+        output: 'assets.json',
+        replacer: require('./webpack/assetManifestsFormatter')
         }),
-      // copy images from assets/images to dist/images
-      new CopyWebpackPlugin([{
-        from: 'assets/images/',
-        to: 'images'
-      }]),
-      // and optimize those images for production
       new ImageminPlugin({
          test: '/\.(jpe?g|png|gif|svg)$/i',
          disable: isDevelopment
