@@ -21,7 +21,7 @@ $(function (){
   $('[data-toggle="popover"]').popover()
 })
 
-// Scripts 
+// Scripts
 
 // Vendor scripts - require NPM packages here.
 
@@ -30,5 +30,4 @@ $(function (){
 require('./scripts/main.js')
 
 // Styles
-
 require('./styles/main.scss')
