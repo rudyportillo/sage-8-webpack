@@ -10,6 +10,14 @@
  * always reference jQuery with $, even when in .noConflict() mode.
  * ======================================================================== */
 
+// init slideout.js
+const slideout = new Slideout({
+  'panel': document.getElementById('slideout-panel'),
+  'menu': document.getElementById('slideout-menu'),
+  'padding': 256,
+  'tolerance': 70
+});
+
 (function($) {
 
   // Use this variable to set up the common and page specific functions. If you
@@ -22,6 +30,13 @@
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
+
+        // Toggle button
+        $('.slideout-toggle-button').on('click', function() {
+          slideout.toggle();
+          $('.hamburger').toggleClass('is-active');
+          $('#slideout-panel').toggleClass('is-inactive');
+        });
       }
     },
     // Home page

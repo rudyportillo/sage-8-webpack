@@ -1,0 +1,29 @@
+#slideout-panel {
+  background: white;
+}
+
+.slideout {
+  background: $gray-800;
+  padding: $spacer;
+}
+
+.slideout .menu-item > a {
+  // @extend .nav-link;
+  color: $gray-200;
+}
+
+.slideout .sub-menu {
+  padding-left: $spacer;
+}
+
+.slideout .sub-menu .menu-item {
+  list-style: none;
+}
+
+.slideout .sub-menu .nav-link::before {
+  margin-right: 0.5rem;
+  display: inline-block;
+  color: $green;
+  content: '\f101';
+  font-family: fontawesome;
+}
