@@ -60,6 +60,7 @@
     "slideout": "^1.0.1",
     "social-colors-scss": "drdogbot7/social-colors-scss",
     "superfish": "^1.7.9",
-    "superfish-scss-theme": "drdogbot7/superfish-scss-theme"
+    "superfish-scss-theme": "drdogbot7/superfish-scss-theme",
+    "webfontloader": "^1.6.28"
   }
 }

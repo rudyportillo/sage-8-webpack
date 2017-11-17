@@ -27,6 +27,11 @@ const slideout = new Slideout({
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+        WebFont.load({
+          google: {
+            families: ['Open Sans:300,300italic,600,600italic']
+          }
+        });
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

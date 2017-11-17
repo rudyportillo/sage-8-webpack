@@ -24,7 +24,7 @@ $(function (){
 // Scripts
 
 // Vendor scripts - require NPM packages here.
-
+require('script-loader!webfontloader')
 
 // Custom Scripts
 require('./scripts/main.js')
