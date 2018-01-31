@@ -14,38 +14,26 @@ use Roots\Sage\Wrapper;
         <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'sage'); ?>
       </div>
     <![endif]-->
-    <nav id="slideout-menu" class="wvs-slideout">
-      <div>
-        <?php
-          if (has_nav_menu('mobile_navigation')) :
-            wp_nav_menu(['theme_location' => 'mobile_navigation', 'menu_class' => 'nav flex-column slideout-menu', 'container' => '', 'depth' => 2]);
-          endif;
-        ?>
-      </div>
-    </nav>
-
-    <div id="slideout-panel">
-      <?php
-        do_action('get_header');
-        get_template_part('templates/header');
-      ?>
-      <div class="wrap container" role="document">
-        <div class="content row">
-          <main class="main">
-            <?php include Wrapper\template_path(); ?>
-          </main><!-- /.main -->
-          <?php if (Setup\display_sidebar()) : ?>
-            <aside class="sidebar">
-              <?php include Wrapper\sidebar_path(); ?>
-            </aside><!-- /.sidebar -->
-          <?php endif; ?>
-        </div><!-- /.content -->
-      </div><!-- /.wrap -->
-      <?php
-        do_action('get_footer');
-        get_template_part('templates/footer');
-      ?>
-    </div>
-  <?php wp_footer(); ?>
+    <?php
+      do_action('get_header');
+      get_template_part('templates/header');
+    ?>
+    <div class="wrap container" role="document">
+      <div class="content row">
+        <main class="main">
+          <?php include Wrapper\template_path(); ?>
+        </main><!-- /.main -->
+        <?php if (Setup\display_sidebar()) : ?>
+          <aside class="sidebar">
+            <?php include Wrapper\sidebar_path(); ?>
+          </aside><!-- /.sidebar -->
+        <?php endif; ?>
+      </div><!-- /.content -->
+    </div><!-- /.wrap -->
+    <?php
+      do_action('get_footer');
+      get_template_part('templates/footer');
+      wp_footer();
+    ?>
   </body>
 </html>
