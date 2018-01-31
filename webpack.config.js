@@ -8,7 +8,6 @@ const ExtractTextPlugin     = require('extract-text-webpack-plugin')
 const ImageminPlugin        = require('imagemin-webpack-plugin').default
 const path                  = require('path')
 const WebpackAssetsManifest = require('webpack-assets-manifest')
-const FileWatcherPlugin     = require("file-watcher-webpack-plugin");
 
 const themeOpts = require('./webpack/theme.config.json')
 
@@ -86,7 +85,7 @@ module.exports = (env = {}) => {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['es2015', { modules: false }]
+              ['env']
             ]
           }
         }]
@@ -116,10 +115,6 @@ module.exports = (env = {}) => {
       new ExtractTextPlugin({
         filename: isProduction ? "styles/[name]-[contenthash].css" : "styles/[name].css",
         disable: isProduction
-      }),
-      new FileWatcherPlugin({
-        root: __dirname,
-        files: ['*.php']
       }),
     ]
   }
