@@ -11,6 +11,18 @@
 }
 
 /*
+  add variables for grays
+*/
+
+:root {
+  // Custom variable values only support SassScript inside `#{}`.
+  @each $color, $value in $grays {
+    --gray-#{$color}: #{$value};
+  }
+}
+
+
+/*
   Aspect ratio (https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/)
   The mixin assumes you'll be nesting an element with the class of content inside your initial block. Like this:
 

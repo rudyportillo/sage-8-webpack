@@ -1,19 +1,30 @@
-@import "common/variables";
-@import "common/variables-bootstrap";
+/*
+  Brand
+*/
+@import 'common/variables_brand';
+
+
+/*
+  Bootstrap
+*/
+@import 'common/variables-bootstrap';
+@import 'common/bootstrap';
 
 /*
   Vendor
 */
-@import "common/bootstrap";
+@import 'common/variables-vendor';
+
 @import "~font-awesome/scss/font-awesome";
 @import "~hamburgers/_sass/hamburgers/hamburgers";
-@import "~slideout/index";
 @import "~social-colors-scss/dist/_social-colors";
-@import "~superfish-scss-theme/dist/scss/main";
+@import "~smartmenus/dist/css/sm-core-css";
+@import "~smartmenus/dist/css/sm-simple/sm-simple";
 
 /*
   Theme
 */
+@import 'common/variables';
 @import "common/global";
 @import "common/utility";
 @import "components/buttons";
