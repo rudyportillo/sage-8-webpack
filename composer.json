@@ -2,28 +2,14 @@
   "name": "drdogbot7/sage-8-webpack",
   "type": "wordpress-theme",
   "license": "MIT",
-  "description": "The best WordPress starter theme with a modern front-end development workflow. Based on HTML5 Boilerplate, webpack, and Bootstrap.",
+  "description": "Custom Wordpress theme based on roots/sage.",
   "authors": [
-    {
-      "name": "Ben Word",
-      "email": "ben@benword.com",
-      "homepage": "https://github.com/retlehs"
-    },
-    {
-      "name": "Scott Walkinshaw",
-      "email": "scott.walkinshaw@gmail.com",
-      "homepage": "https://github.com/swalkinshaw"
-    },
     {
       "name": "Jeremy Mullis",
       "email": "jeremy.mullis@gmail.com",
       "homepage": "https://github.com/drdogbot7"
     }
   ],
-  "support": {
-    "issues": "https://github.com/roots/sage/issues",
-    "forum": "https://discourse.roots.io/"
-  },
   "require": {
     "php": ">=5.4.0",
     "composer/installers": "~1.0",

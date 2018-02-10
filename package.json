@@ -1,15 +1,10 @@
 {
-  "name": "sage",
-  "version": "8.5.2",
-  "author": "Ben Word <ben@benword.com>",
-  "homepage": "https://roots.io/sage/",
+  "name": "sage-8-webpack",
+  "version": "0.0.1",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/roots/sage.git"
-  },
-  "bugs": {
-    "url": "https://github.com/roots/sage/issues"
+    "url": "git@github.com:drdogbot7/sage-8-webpack.git"
   },
   "licenses": [
     {
