@@ -15,17 +15,18 @@ $sage_includes = [
   'lib/setup.php',     // Theme setup
   'lib/titles.php',    // Page titles
   'lib/wrapper.php',   // Theme wrapper class
-  'lib/customizer.php', // Theme customizer
+  'lib/customizer.php',// Theme customizer
+  'lib/images.php',    // custom image sizes
 
   // Carbon Fields
   'lib/fields/theme-options.php'
 ];
 
 foreach ($sage_includes as $file) {
-  if (!$filepath = locate_template($file)) {
-    trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $file), E_USER_ERROR);
-  }
+    if (!$filepath = locate_template($file)) {
+        trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $file), E_USER_ERROR);
+    }
 
-  require_once $filepath;
+    require_once $filepath;
 }
 unset($file, $filepath);
