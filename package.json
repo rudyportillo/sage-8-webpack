@@ -62,9 +62,8 @@
     "webpack-assets-manifest": "^1.0.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-pro-webfonts": "^1.0.3",
     "bootstrap": "^4.0.0",
-    "font-awesome": "^4.7.0",
-    "hamburgers": "^0.9.1",
     "popper.js": "^1.12.6",
     "social-colors-scss": "drdogbot7/social-colors-scss",
     "webfontloader": "^1.6.28"

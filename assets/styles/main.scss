@@ -21,7 +21,7 @@
 /*
   Theme
 */
-@import 'common/variables';
+@import 'common/variables-theme';
 @import "common/global";
 @import "common/utility";
 @import "components/buttons";
@@ -35,4 +35,3 @@
 @import "layouts/pages";
 @import "layouts/posts";
 @import "layouts/tinymce";
-@import "plugins/slideout";

@@ -1,3 +1,6 @@
+import 'bootstrap'
+import WebFont from 'webfontloader'
+
 /* ========================================================================
  * DOM-based Routing
  * Based on http://goo.gl/EUTi53 by Paul Irish
@@ -9,92 +12,77 @@
  * The routing is enclosed within an anonymous function so that you can
  * always reference jQuery with $, even when in .noConflict() mode.
  * ======================================================================== */
-
-// init slideout.js
-const slideout = new Slideout({
-  'panel': document.getElementById('slideout-panel'),
-  'menu': document.getElementById('slideout-menu'),
-  'padding': 256,
-  'tolerance': 70
-});
-
-(function($) {
-
+  ;(function ($) {
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
   var Sage = {
     // All pages
-    'common': {
-      init: function() {
+    common: {
+      init: function () {
         // JavaScript to be fired on all pages
-        WebFont.load({
-          google: {
-            families: ['Open Sans:300,300italic,600,600italic']
-          }
-        });
+        // Enable Bootstrap Tooltips, Popovers
+        // $('[data-toggle="tooltip"]').tooltip()
+        // $('[data-toggle="popover"]').popover()
+        // WebFont.load({
+        //   google: {
+        //     families: ['Open Sans:300,300italic,600,600italic']
+        //   }
+        // });
       },
-      finalize: function() {
+      finalize: function () {
         // JavaScript to be fired on all pages, after page specific JS is fired
-
-        // Superfish dropdown menu
-        $('.sf-menu').superfish();
-
-        // Toggle button
-        $('.slideout-toggle-button').on('click', function() {
-          slideout.toggle();
-          $('.hamburger').toggleClass('is-active');
-          $('#slideout-panel').toggleClass('is-inactive');
-        });
       }
     },
     // Home page
-    'home': {
-      init: function() {
+    home: {
+      init: function () {
         // JavaScript to be fired on the home page
       },
-      finalize: function() {
+      finalize: function () {
         // JavaScript to be fired on the home page, after the init JS
       }
     },
     // About us page, note the change from about-us to about_us.
-    'about_us': {
-      init: function() {
+    about_us: {
+      init: function () {
         // JavaScript to be fired on the about us page
       }
     }
-  };
+  }
 
   // The routing fires all common scripts, followed by the page specific scripts.
   // Add additional events for more control over timing e.g. a finalize event
   var UTIL = {
-    fire: function(func, funcname, args) {
-      var fire;
-      var namespace = Sage;
-      funcname = (funcname === undefined) ? 'init' : funcname;
-      fire = func !== '';
-      fire = fire && namespace[func];
-      fire = fire && typeof namespace[func][funcname] === 'function';
+    fire: function (func, funcname, args) {
+      var fire
+      var namespace = Sage
+      funcname = funcname === undefined ? 'init' : funcname
+      fire = func !== ''
+      fire = fire && namespace[func]
+      fire = fire && typeof namespace[func][funcname] === 'function'
 
       if (fire) {
-        namespace[func][funcname](args);
+        namespace[func][funcname](args)
       }
     },
-    loadEvents: function() {
+    loadEvents: function () {
       // Fire common init JS
-      UTIL.fire('common');
+      UTIL.fire('common')
 
       // Fire page-specific init JS, and then finalize JS
-      $.each(document.body.className.replace(/-/g, '_').split(/\s+/), function(i, classnm) {
-        UTIL.fire(classnm);
-        UTIL.fire(classnm, 'finalize');
-      });
+      $.each(document.body.className.replace(/-/g, '_').split(/\s+/), function (
+        i,
+        classnm
+      ) {
+        UTIL.fire(classnm)
+        UTIL.fire(classnm, 'finalize')
+      })
 
       // Fire common finalize JS
-      UTIL.fire('common', 'finalize');
+      UTIL.fire('common', 'finalize')
     }
-  };
+  }
 
   // Load Events
-  $(document).ready(UTIL.loadEvents);
-
-})(jQuery); // Fully reference jQuery after this point.
+  $(document).ready(UTIL.loadEvents)
+})(jQuery) // Fully reference jQuery after this point.
