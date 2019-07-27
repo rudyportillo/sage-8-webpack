@@ -1,0 +1,76 @@
+/*
+    Classes for custom colors
+*/
+
+@each $color, $value in $colors {
+  @include bg-variant(".bg-#{$color}", $value);
+}
+
+@each $color, $value in $colors {
+  @include text-emphasis-variant(".text-#{$color}", $value);
+}
+
+/*
+  add variables for grays
+*/
+
+:root {
+  // Custom variable values only support SassScript inside `#{}`.
+  @each $color, $value in $grays {
+    --gray-#{$color}: #{$value};
+  }
+}
+
+/*
+  Aspect ratio (https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/)
+  The mixin assumes you'll be nesting an element with the class of content inside your initial block. Like this:
+
+  <div class="sixteen-nine">
+    <div class="content">
+      insert content here
+      this will maintain a 16:9 aspect ratio
+    </div>
+  </div>
+
+*/
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@mixin page-title($image, $bottom: -30px, $right: -40%) {
+  position: relative;
+  transform: rotate(-90deg);
+  transform-origin: bottom;
+  @include font-size(3.6rem, 2.4rem);
+  letter-spacing: 2px;
+  white-space: nowrap;
+  margin-bottom: 0;
+  bottom: #{$bottom};
+  &:before {
+    content: "";
+    transform: rotate(90deg);
+    display: inline-block;
+    position: relative;
+    right: #{$right};
+    @include size(120px);
+    background-image: url(#{$image});
+    background-repeat: no-repeat;
+    background-position: top right;
+    z-index: -1;
+    @content;
+  }
+}

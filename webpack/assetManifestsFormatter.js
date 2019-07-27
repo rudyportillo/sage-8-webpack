@@ -1,7 +1,7 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = (key, value) => {
-  if (typeof value === 'string') {
+  if (typeof value === "string") {
     return value;
   }
   const manifest = value;
@@ -12,8 +12,8 @@ module.exports = (key, value) => {
    *
    * Before:
    *   {
-   *     "main.js": "scripts/main_abcdef.js"
-   *     "main.css": "styles/main_abcdef.css"
+   *     "main.js": "scripts/main.js"
+   *     "main.css": "styles/main.css"
    *   }
    * After:
    *   {
@@ -21,7 +21,7 @@ module.exports = (key, value) => {
    *     "styles/main.css": "styles/main_abcdef.css"
    *   }
    */
-  Object.keys(manifest).forEach((src) => {
+  Object.keys(manifest).forEach(src => {
     const sourcePath = path.basename(path.dirname(src));
     const targetPath = path.basename(path.dirname(manifest[src]));
     if (sourcePath === targetPath) {

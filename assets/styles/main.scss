@@ -1,13 +1,21 @@
+/*
+  Bootstrap
+*/
+@import "common/variables-bootstrap";
+@import "common/bootstrap";
+
+/*
+  Theme
+*/
 @import "common/variables";
-
-// "~" tells webpack to look in 'node_modules/'
-@import "~bootstrap/scss/bootstrap.scss";
-
+@import "common/mixins";
 @import "common/global";
+@import "common/utility";
 @import "components/buttons";
 @import "components/comments";
 @import "components/forms";
 @import "components/grid";
+@import "components/search";
 @import "components/wp-classes";
 @import "layouts/header";
 @import "layouts/sidebar";
@@ -15,3 +23,7 @@
 @import "layouts/pages";
 @import "layouts/posts";
 @import "layouts/tinymce";
+
+/*
+  Pages
+*/

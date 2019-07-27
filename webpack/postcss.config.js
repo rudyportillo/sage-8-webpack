@@ -1,20 +1,8 @@
-const postcssConfig = {
+module.exports = {
   parser: "postcss-safe-parser",
   plugins: {
     "postcss-import": {},
-    "postcss-cssnext": {
-      features: {
-        customProperties: {
-          preserve: true
-        }
-      }
-    },
-    "cssnano":  {
-      discardComments: {
-        removeAll: true
-      }
-    }
+    "postcss-cssnext": { warnForDuplicates: false },
+    cssnano: {}
   }
 };
-
-module.exports = postcssConfig;

@@ -1,4 +1,4 @@
 {
-  "name": "yourthemename",
-  "proxy": "http://localhost:1234"
+  "name": "themename",
+  "proxy": "http://localhost:8000"
 }

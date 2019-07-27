@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Sage includes
  *
@@ -15,7 +16,12 @@ $sage_includes = [
   'lib/setup.php',     // Theme setup
   'lib/titles.php',    // Page titles
   'lib/wrapper.php',   // Theme wrapper class
-  'lib/customizer.php' // Theme customizer
+  // 'lib/customizer.php', // Theme customizer
+  // 'lib/images.php',    // custom image sizes
+
+  // Carbon Fields
+  'lib/fields/theme-options.php',
+  'lib/fields/page-meta.php'
 ];
 
 foreach ($sage_includes as $file) {
@@ -26,3 +32,13 @@ foreach ($sage_includes as $file) {
   require_once $filepath;
 }
 unset($file, $filepath);
+
+/**
+ * Carbon Fields
+ */
+add_action('after_setup_theme', 'crb_load');
+function crb_load()
+{
+  require_once('vendor/autoload.php');
+  \Carbon_Fields\Carbon_Fields::boot();
+}

@@ -1,30 +1,16 @@
 {
-  "name": "drdogbot7/sage-8-webpack",
+  "name": "rudyportillo/sage-8-webpack",
   "type": "wordpress-theme",
   "license": "MIT",
-  "description": "The best WordPress starter theme with a modern front-end development workflow. Based on HTML5 Boilerplate, webpack, and Bootstrap.",
-  "homepage": "https://roots.io/sage/",
-  "authors": [
-    {
-      "name": "Ben Word",
-      "email": "ben@benword.com",
-      "homepage": "https://github.com/retlehs"
-    },
-    {
-      "name": "Scott Walkinshaw",
-      "email": "scott.walkinshaw@gmail.com",
-      "homepage": "https://github.com/swalkinshaw"
-    }
-  ],
-  "keywords": [
-    "wordpress"
-  ],
-  "support": {
-    "issues": "https://github.com/roots/sage/issues",
-    "forum": "https://discourse.roots.io/"
-  },
+  "description": "Custom Wordpress theme based on roots/sage.",
+  "authors": [{
+    "name": "Rudy Portillo",
+    "email": "hello@rudyportillo.com",
+    "homepage": "https://github.com/rudyportillo"
+  }],
   "require": {
     "php": ">=5.4.0",
-    "composer/installers": "~1.0"
+    "composer/installers": "~1.0",
+    "htmlburger/carbon-fields": "^2.1"
   }
 }
